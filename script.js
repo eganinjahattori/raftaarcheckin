@@ -6,17 +6,19 @@ async function handleSubmit() {
         if (phone.length == 10) {
             phone = '+91' + phone;
             const body = { name: name, phone: phone };
-            const response = await fetch('http://localhost:9800/send', {
-                method: 'POST',
-                body: JSON.stringify(body),
-                mode: 'cors',
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            });
+            const response = await fetch(
+                // 'http://localhost:9800/send'
+                'https://raftaarcheckin.herokuapp.com/send'
+                , {
+                    method: 'POST',
+                    body: JSON.stringify(body),
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
             console.log(response);
-            if(response.status == 200)
-            {
+            if (response.status == 200) {
                 window.alert("Submitted");
                 document.getElementById("name_input").value = null;
                 document.getElementById("phone_input").value = null;
